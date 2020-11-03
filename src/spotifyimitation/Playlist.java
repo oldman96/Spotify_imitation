@@ -19,7 +19,13 @@ public class Playlist extends Song{
         playlist = new ArrayList<Song>();
     }
     
+    public int getSize(){
+        return playlist.size();
+    }
     
+    public Song getSong(int number){
+        return playlist.get(number);
+    }
     
     public void loadDataFromInputFile(){
         BufferedReader reader; 
@@ -50,4 +56,5 @@ public class Playlist extends Song{
             System.out.println(i+1 + ". " + playlist.get(i).toString());
         }
     }
+
 }

@@ -13,8 +13,10 @@ public class SpotifyImitationApp {
     
     public static void main(String[] args) {
         Playlist playlist1 = new Playlist();
+        Player player1 = new Player();
+        
         playlist1.loadDataFromInputFile();
-        playlist1.listSongs();
+        player1.listSongsInOrder(playlist1);
     }
     
     

@@ -63,12 +63,13 @@ public class Song {
 
     @Override
     public String toString() {
-        return this.songName + ", " +
-               this.artist + ", " +
-               this.genre + ", " +
-               this.durationInSec + ", " +
-               this.albumName;
+//        return this.songName + ",\t" +
+//               this.artist + ",\t" +
+//               this.genre + ",\t" +
+//               this.durationInSec + ",\t" +
+//               this.albumName;
+
+        //elcsusztattam a sztringek kezdopoziciojat, hogy oszlopokba rendezve tudjam kiiratni majd
+        return String.format("%-50s%-30s%-20s%-15s%s",this.songName, this.artist, this.genre, this.durationInSec, this.albumName);
     }
-    
-    
 }
