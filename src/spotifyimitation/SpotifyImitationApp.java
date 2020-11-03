@@ -9,13 +9,6 @@ package spotifyimitation;
  *
  * @author oldman96
  */
-public class SpotifyImitation {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        int number;
-    }
+public class SpotifyImitationApp {
     
 }
