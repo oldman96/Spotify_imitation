@@ -11,4 +11,11 @@ package spotifyimitation;
  */
 public class SpotifyImitationApp {
     
+    public static void main(String[] args) {
+        Playlist playlist1 = new Playlist();
+        playlist1.loadDataFromInputFile();
+        playlist1.listSongs();
+    }
+    
+    
 }
