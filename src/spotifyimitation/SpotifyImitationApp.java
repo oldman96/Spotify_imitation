@@ -5,6 +5,8 @@
  */
 package spotifyimitation;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author oldman96
@@ -12,12 +14,9 @@ package spotifyimitation;
 public class SpotifyImitationApp {
     
     public static void main(String[] args) {
-        Playlist playlist1 = new Playlist();
+        IOTasks task = new IOTasks();
         Player player1 = new Player();
         
-        playlist1.loadDataFromInputFile();
-        player1.listSongsInOrder(playlist1);
+        task.taskSelector(player1);
     }
-    
-    
 }
