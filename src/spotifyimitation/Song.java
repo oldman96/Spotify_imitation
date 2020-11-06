@@ -19,8 +19,25 @@ public class Song {
     public Song() {
     }
     
-
-
+    
+    @Override
+    public String toString() {
+        //Elcsusztattam a sztringek kezdopoziciojat,
+        //hogy oszlopokba rendezve tudjam kiiratni oket
+        return String.format("%-50s%-30s%-20s%-15s%s",
+                             this.songName, this.artist, this.genre,
+                             this.durationInSec, this.albumName);
+    }
+    
+    
+    //Fajlba menteshez
+    public String toStringWithSeparator(){
+        return this.songName + ";" + this.artist + ";" + this.genre + ";" +
+               this.durationInSec + ";" + this.albumName;
+    }
+    
+    
+    //Getterek, setterek
     public String getSongName() {
         return songName;
     }
@@ -59,19 +76,5 @@ public class Song {
 
     public void setAlbumName(String albumName) {
         this.albumName = albumName;
-    }
-
-    @Override
-    public String toString() {
-        //Elcsusztattam a sztringek kezdopoziciojat,
-        //hogy oszlopokba rendezve tudjam kiiratni majd
-        return String.format("%-50s%-30s%-20s%-15s%s",
-                             this.songName, this.artist, this.genre,
-                             this.durationInSec, this.albumName);
-    }
-    
-    public String toStringWithSeparator(){
-        return this.songName + ";" + this.artist + ";" + this.genre + ";" +
-               this.durationInSec + ";" + this.albumName;
     }
 }

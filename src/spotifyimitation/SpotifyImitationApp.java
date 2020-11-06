@@ -5,8 +5,6 @@
  */
 package spotifyimitation;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author oldman96

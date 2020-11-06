@@ -6,6 +6,8 @@
 package spotifyimitation;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,8 +18,10 @@ import java.util.ArrayList;
  *
  * @author oldman96
  */
+
 public class IOTasks {
     private final String DEFAULT_INPUT_FILENAME = "defaultInput";
+    
     
     public String inputFromKeyboard(){
         String input = null;
@@ -27,29 +31,36 @@ public class IOTasks {
         }catch(IOException e){
             e.printStackTrace();
         }
-        //System.out.println(input);
         return input;
     }
+
     
-    public void savePlaylistToFile(ArrayList<Song> playlistToSave, String filename){
-        //System.out.println("----Adatok mentese fajlba----");
+    public boolean savePlaylistToFile(ArrayList<Song> playlistToSave, String filename){
+        boolean success = false;
         try {
-            FileWriter save = new FileWriter(filename + ".txt");
-            for(int i = 0; i < playlistToSave.size(); i++){
-                save.write(playlistToSave.get(i).toStringWithSeparator());
-                save.write("\n");
+            File file = new File(filename + ".txt");
+            if(file.exists()){
+                throw new Exception("\n[ERROR] File already exists! [ERROR]");
             }
-            save.close();
-            //System.out.println("----Adatok sikeresen mentve----");
-
-
-        } catch (Exception e) {
-            System.out.println("Something went wrong.");
+            else{
+                FileWriter save = new FileWriter(filename + ".txt");
+                for(int i = 0; i < playlistToSave.size(); i++){
+                    save.write(playlistToSave.get(i).toStringWithSeparator());
+                    save.write("\n");
+                }
+                save.close();
+                success = true;
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+        return success;
     }
     
-        public void loadDataFromInputFile(ArrayList<Song> playlist, String filename){
-        BufferedReader reader; 
+    
+    public boolean loadDataFromInputFile(ArrayList<Song> playlist, String filename){
+        BufferedReader reader;
+        boolean success = false;
         try{
             reader = new BufferedReader(new FileReader(filename + ".txt"));
             String line = reader.readLine();
@@ -66,16 +77,24 @@ public class IOTasks {
                 playlist.add(song);
                 line = reader.readLine();
             }
+            success = true;
             reader.close();
+        }catch(FileNotFoundException e){
+            System.out.println("\n[ERROR] File not found. [ERROR]");
+            success = false;
         }catch(IOException e){
             e.printStackTrace();
+            success = false;
         }
+        return success;
     }
     
+    
     //overrideolt loadDataFromInputFile metodus
-    public void loadDataFromInputFile(ArrayList<Song> playlist){
-        loadDataFromInputFile(playlist, DEFAULT_INPUT_FILENAME);
+    public boolean loadDataFromInputFile(ArrayList<Song> playlist){
+        return loadDataFromInputFile(playlist, DEFAULT_INPUT_FILENAME);
     }
+    
     
     public void taskSelector(Player player){
         int task;
@@ -95,7 +114,11 @@ public class IOTasks {
                            + "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
                            + "\nGive the number of selected task: ");
 
-            task = Integer.parseInt(inputFromKeyboard());
+            try{
+                task = Integer.parseInt(inputFromKeyboard());
+            }catch (NumberFormatException ex) {
+            }
+            
             System.out.println("\n");
             switch (task) {
                 case 1:
@@ -131,5 +154,4 @@ public class IOTasks {
             }
         }while(task!=0);
     }
-    
 }
