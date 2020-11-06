@@ -46,20 +46,6 @@ public class Player extends Song{
     
     
     //A kiiratasok alapja
-    public void songLister(){
-        if( this.playlist.size() > 0){
-            System.out.println("\t\t\t\tSong name\t\t\t\tArtist\t\t\tGenre\t\tDuration(sec)\t\tAlbum");
-            System.out.println("--------------------------------------------------------------------"
-                + "-----------------------------------------------------------------------------"
-                + "-------------------------------");
-            for (int i = 0; i < this.playlist.size(); i++) {
-                System.out.printf("%s %3d. %-30s\n", ("LEJATSZVA"), (i+1), (this.playlist.get(i).toString()));
-            }
-        }else System.out.println("\n[ERROR] Playlist is empty. [ERROR]");
-    }
-    
-    
-    //A fenti songLister metodus override-ja, itt var parametert
     public void songLister(ArrayList<?> playlistParam){
         if( playlistParam.size() > 0){
             System.out.println("\t\t\t\tSong name\t\t\t\tArtist\t\t\tGenre\t\tDuration(sec)\t\tAlbum");
