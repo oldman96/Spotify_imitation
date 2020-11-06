@@ -16,9 +16,6 @@ public class Song {
     private String durationInSec;
     private String albumName;
 
-    public Song() {
-    }
-    
     
     @Override
     public String toString() {
